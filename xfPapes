@@ -1,0 +1,28 @@
+#!/bin/bash
+
+read -p "How many monitors should this wallpaper be applied to? " monitor_input
+
+if [[ $monitor_input -eq 1 ]] ; then
+	wal -i "/path/to/wallpaper/folder/$1" && 
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "/path/to/wallpaper/folder/$1"
+
+elif [[ $monitor_input -eq 2 ]] ; then
+	wal -i "/path/to/wallpaper/folder/$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "/path/to/wallpaper/folder/$1" && 
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor2/workspace0/last-image -s "/path/to/wallpaper/folder/$1"
+
+elif [[ $monitor_input -eq 3 ]] ; then
+	wal -i "/path/to/wallpaper/folder$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "/path/to/wallpaper/folder/$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor2/workspace0/last-image -s "/path/to/wallpaper/folder/$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor3/workspace0/last-image -s "/path/to/wallpaper/folder/$1" 
+
+elif [[ $monitor_input -eq 4 ]] ; then
+	wal -i "/path/to/wallpaper/folder/$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s "/path/to/wallpaper/folder/$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor2/workspace0/last-image -s "/path/to/wallpaper/folder/$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor3/workspace0/last-image -s "/path/to/wallpaper/folder/$1" &&
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor1/workspace0/last-image -s "/path/to/wallpaper/folder/$1" 
+else
+	echo "You have selected too many monitors"
+fi
